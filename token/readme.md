@@ -1,1 +1,1 @@
-Core tokens functionality (ERC20 etc)
+Tokens interface and functions
