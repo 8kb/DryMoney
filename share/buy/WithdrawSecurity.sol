@@ -1,8 +1,7 @@
 pragma solidity ^0.4.18;
-import "../../DryContract.sol";
 import "./Buyable.sol";
 
-contract ShareBuyWithdrawSecurity is DryContract, ShareBuyBuyable {
+contract ShareBuyWithdrawSecurity is ShareBuyBuyable {
     /**
      * @dev Calculate count of shares what can buy concret buyer with selected amount
      * @param amount 
