@@ -1,6 +1,8 @@
 pragma solidity ^0.4.18;
 
 contract OwnerLimit {
+    using LibSafeMath for uint256;
+    
     uint256 oldOwnerLimit;
     uint oldOwnerLimitTimestamp = now;
     uint256 public ownerLimitSpeed;
