@@ -1,12 +1,11 @@
 pragma solidity ^0.4.18;
-import "../DryContract.sol";
 import "./IShared.sol";
 
 /**
  * @title 
  * @dev 
  */
- contract ShareSharedLite is DryContract, ShareIShared {
+ contract ShareSharedLite is ShareIShared {
     /**
      * @dev shares balances
      */
