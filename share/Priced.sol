@@ -1,4 +1,5 @@
 pragma solidity ^0.4.18;
+import "../lib/SafeMath.sol";
 
 contract SharePriced {
     using LibSafeMath for uint256;
