@@ -1,5 +1,6 @@
 pragma solidity ^0.4.18;
 import "./Buyable.sol";
+import "../../lib/SafeMath.sol";
 
 contract ShareBuyWithdrawSecurity is ShareBuyBuyable {
     using LibSafeMath for uint256;
