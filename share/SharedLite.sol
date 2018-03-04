@@ -1,11 +1,12 @@
 pragma solidity ^0.4.18;
+import "../DryContract.sol";
 import "./IShared.sol";
 
 /**
  * @title 
  * @dev 
  */
- contract ShareSharedLite is ShareIShared {
+ contract ShareSharedLite is DryContract, ShareIShared {
     /**
      * @dev shares balances
      */
@@ -42,14 +43,14 @@ import "./IShared.sol";
     function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
         if(_from != address(0)) {
             require(_value <= shares[_from]);
-            shares[_from] -= _value;
+            shares[_from] = shares[_from].sub(_value);
         } else {
-            shareCount_ +=_value;
+            shareCount_ =shareCount_.add(_value);
         }
         if(_to != address(0)) {
-            shares[_to] +=_value;
+            shares[_to] =shares[_to].add(_value);
         } else {
-            shareCount_ -=_value;
+            shareCount_ =shareCount_.sub(_value);
         }
         return true;
     }
