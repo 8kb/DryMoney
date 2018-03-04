@@ -1,7 +1,6 @@
 pragma solidity ^0.4.18;
-import "../DryContract.sol";
 
-contract ExchangeAccounts is DryContract {
+contract ExchangeAccounts {
     //mapping of token addresses to mapping of account balances (token=0 means Ether)
     mapping (address => mapping (address => uint)) public tokens;
   
