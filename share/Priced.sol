@@ -1,6 +1,8 @@
 pragma solidity ^0.4.18;
 
 contract SharePriced {
+    using LibSafeMath for uint256;
+    
     uint256 public price;
     uint256 public priceUnits;
     
