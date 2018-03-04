@@ -1,7 +1,8 @@
 pragma solidity ^0.4.18;
-import "../share/IShared.sol";
+import "../Drycontract.sol";
+import "./IShared.sol";
 
-contract ShareCountLimit is ShareIShared {
+contract ShareCountLimit is DryContact, ShareIShared {
     uint256 public maximumShareCount;
     
     /**
@@ -13,7 +14,7 @@ contract ShareCountLimit is ShareIShared {
      */
     function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
         if(_from == address(0)) {
-            require(shareCount() + _value <= maximumShareCount);
+            require(shareCount().add(_value) <= maximumShareCount);
         }
         return super.shareTransfer(_from, _to, _value);
     }
