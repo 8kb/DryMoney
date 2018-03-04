@@ -1,7 +1,6 @@
 pragma solidity ^0.4.18;
-import "../DryContract.sol";
 
-contract SharePriced is DryContract{
+contract SharePriced {
     uint256 public price;
     uint256 public priceUnits;
     
