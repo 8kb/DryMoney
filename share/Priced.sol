@@ -1,6 +1,7 @@
 pragma solidity ^0.4.18;
+import "../DryContract.sol";
 
-contract SharePriced {
+contract SharePriced is DryContract{
     uint256 public price;
     uint256 public priceUnits;
     
@@ -12,7 +13,8 @@ contract SharePriced {
     function defaultShareToAmount(uint256 number) public view returns (uint256) {
         require(price != 0);
         require(priceUnits != 0);
-        return (number * price) / priceUnits;
+        uint256 pricedNumber = number.mul(price);
+        return pricedNumber.div(priceUnits);
     }
 
     /**
@@ -23,6 +25,7 @@ contract SharePriced {
     function defaultAmountToShare(uint256 amount) public view returns (uint256) {
         require(price != 0);
         require(priceUnits != 0);
-        return (amount * priceUnits) / price;
+        uint256 amountUnit = amount.mul(priceUnits);
+        return  amountUnit.div(price);
     }
 }
