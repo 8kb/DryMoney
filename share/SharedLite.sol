@@ -6,6 +6,7 @@ import "./IShared.sol";
  * @dev 
  */
  contract ShareSharedLite is ShareIShared {
+    using LibSafeMath for uint256;
     /**
      * @dev shares balances
      */
