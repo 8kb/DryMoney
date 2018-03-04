@@ -1,4 +1,4 @@
 import "./lib/SafeMath.sol";
- contract CoreContract {
+ contract DryContract {
     using LibSafeMath for uint256;
  }
