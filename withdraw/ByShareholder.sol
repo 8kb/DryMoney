@@ -1,8 +1,7 @@
 pragma solidity ^0.4.18;
-import "../DryContract.sol";
 import "../share/IShared.sol";
 
-contract WithdrawByShareholder is DryContract, ShareIShared {
+contract WithdrawByShareholder is ShareIShared {
     /**
      * @dev Withdraw all shared balance by shareholder 
      */
