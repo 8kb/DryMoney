@@ -1,7 +1,6 @@
 pragma solidity ^0.4.18;
-import "../DryContract.sol";
 
-contract OwnerLimit is DryContract {
+contract OwnerLimit {
     uint256 oldOwnerLimit;
     uint oldOwnerLimitTimestamp = now;
     uint256 public ownerLimitSpeed;
