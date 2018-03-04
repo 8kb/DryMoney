@@ -1,13 +1,12 @@
 pragma solidity ^0.4.18;
 import "./Minimal.sol";
 import "./IErc20.sol";
-import "../DryContract.sol";
 
 /**
  * @title Allowance
  * @dev Allowances functions for ERC20
  */
-contract TokenAllowance is DryContract, TokenMinimal, TokenIErc20 {
+contract TokenAllowance is TokenMinimal, TokenIErc20 {
     /**
      * @dev Allowances map
      */
