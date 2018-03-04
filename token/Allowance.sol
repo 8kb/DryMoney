@@ -7,6 +7,7 @@ import "./IErc20.sol";
  * @dev Allowances functions for ERC20
  */
 contract TokenAllowance is TokenMinimal, TokenIErc20 {
+    using LibSafeMath for uint256;
     /**
      * @dev Allowances map
      */
