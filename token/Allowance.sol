@@ -1,6 +1,7 @@
 pragma solidity ^0.4.18;
 import "./Minimal.sol";
 import "./IErc20.sol";
+import "../lib/SafeMath.sol";
 
 /**
  * @title Allowance
