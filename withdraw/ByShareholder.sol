@@ -1,5 +1,6 @@
 pragma solidity ^0.4.18;
 import "../share/IShared.sol";
+import "../lib/SafeMath.sol";
 
 contract WithdrawByShareholder is ShareIShared {
     using LibSafeMath for uint256;
