@@ -1,19 +1,21 @@
 pragma solidity ^0.4.18;
+import "../DryContract.sol";
 
-contract OwnerLimit {
+contract OwnerLimit is DryContract {
     uint256 oldOwnerLimit;
     uint oldOwnerLimitTimestamp = now;
     uint256 public ownerLimitSpeed;
     uint256 public ownerLimitMaximum;
 
     /**
-     * @dev Get withdraw limit allowed for owner
+     * @dev Get withdraw/operation limit allowed for owner
      * @return An uint256 representing withdraw limit
      */
     function getOwnerLimit() public view returns (uint256) {
         if(oldOwnerLimit > ownerLimitMaximum) return oldOwnerLimit;
-        uint256 period = now - oldOwnerLimitTimestamp;
-        uint256 limit = oldOwnerLimit + (period * ownerLimitSpeed);
+        uint256 period = now.sub(oldOwnerLimitTimestamp);
+        uint256 delta = period.mul(ownerLimitSpeed);
+        uint256 limit = oldOwnerLimit.sub(delta);
         if(limit > ownerLimitMaximum) limit = ownerLimitMaximum;
         return limit;
     }
@@ -23,7 +25,7 @@ contract OwnerLimit {
      * @param _value The amount to be changed
      */
     function changeOwnerLimit(uint256 _value) internal {
-        oldOwnerLimit = getOwnerLimit() - _value;
+        oldOwnerLimit = getOwnerLimit().sub(_value);
         oldOwnerLimitTimestamp = now;
     }
 }
