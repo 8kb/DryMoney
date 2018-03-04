@@ -2,6 +2,7 @@ pragma solidity ^0.4.18;
 import "../share/IShared.sol";
 
 contract WithdrawByShareholder is ShareIShared {
+    using LibSafeMath for uint256;
     /**
      * @dev Withdraw all shared balance by shareholder 
      */
