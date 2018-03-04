@@ -1,12 +1,13 @@
 pragma solidity ^0.4.18;
 import "./Minimal.sol";
 import "./IErc20.sol";
+import "../DryContract.sol";
 
 /**
  * @title Allowance
  * @dev Allowances functions for ERC20
  */
-contract TokenAllowance is TokenMinimal, TokenIErc20 {
+contract TokenAllowance is DryContract, TokenMinimal, TokenIErc20 {
     /**
      * @dev Allowances map
      */
@@ -27,7 +28,7 @@ contract TokenAllowance is TokenMinimal, TokenIErc20 {
         require(_to != address(0));
         require(_from != address(0));
         require(_value <= allowed[_from][msg.sender]);
-        allowed[_from][msg.sender] -= _value;
+        allowed[_from][msg.sender] = allowed[_from][msg.sender].sub(_value);
         return shareTransfer(_from, _to, _value);
     }
  
@@ -68,7 +69,7 @@ contract TokenAllowance is TokenMinimal, TokenIErc20 {
      * @param _addedValue The amount of tokens to increase the allowance by.
      */
     function increaseApproval(address _spender, uint _addedValue) public returns (bool) {
-        allowed[msg.sender][_spender] = allowed[msg.sender][_spender] + _addedValue;
+        allowed[msg.sender][_spender] = allowed[msg.sender][_spender].add(_addedValue);
         Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
         return true;
     }
@@ -88,7 +89,7 @@ contract TokenAllowance is TokenMinimal, TokenIErc20 {
         if (_subtractedValue > oldValue) {
             allowed[msg.sender][_spender] = 0;
         } else {
-            allowed[msg.sender][_spender] = oldValue - _subtractedValue;
+            allowed[msg.sender][_spender] = oldValue.sub(_subtractedValue);
         }
         Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
         return true;
