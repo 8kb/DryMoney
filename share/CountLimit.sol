@@ -1,8 +1,7 @@
 pragma solidity ^0.4.18;
-import "../Drycontract.sol";
 import "./IShared.sol";
 
-contract ShareCountLimit is DryContact, ShareIShared {
+contract ShareCountLimit is ShareIShared {
     uint256 public maximumShareCount;
     
     /**
