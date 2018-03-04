@@ -2,6 +2,7 @@ pragma solidity ^0.4.18;
 import "./Buyable.sol";
 
 contract ShareBuyWithdrawSecurity is ShareBuyBuyable {
+    using LibSafeMath for uint256;
     /**
      * @dev Calculate count of shares what can buy concret buyer with selected amount
      * @param amount 
