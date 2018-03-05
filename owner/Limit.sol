@@ -17,7 +17,7 @@ contract OwnerLimit {
         if(oldOwnerLimit > ownerLimitMaximum) return oldOwnerLimit;
         uint256 period = now.sub(oldOwnerLimitTimestamp);
         uint256 delta = period.mul(ownerLimitSpeed);
-        uint256 limit = oldOwnerLimit.sub(delta);
+        uint256 limit = oldOwnerLimit.add(delta);
         if(limit > ownerLimitMaximum) limit = ownerLimitMaximum;
         return limit;
     }
