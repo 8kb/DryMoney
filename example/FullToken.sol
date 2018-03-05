@@ -1,5 +1,4 @@
 pragma solidity ^0.4.18;
-import "github.com/8kb/DryMoney/DryContract.sol";
 import "github.com/8kb/DryMoney/share/SharedLite.sol";
 import "github.com/8kb/DryMoney/token/Minimal.sol";
 import "github.com/8kb/DryMoney/token/DescEditByOwner.sol";
@@ -12,7 +11,7 @@ import "github.com/8kb/DryMoney/withdraw/ByOwnerLimited.sol";
 import "github.com/8kb/DryMoney/withdraw/ByShareholder.sol";
 import "github.com/8kb/DryMoney/share/CountLimit.sol";
 
-contract DemoToken is DryContract
+contract DemoToken is
 ShareSharedLite,
 TokenMinimal,
 TokenDescEditByOwner,
