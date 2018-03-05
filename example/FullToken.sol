@@ -7,8 +7,8 @@ import "github.com/8kb/DryMoney/share/Burn.sol";
 import "github.com/8kb/DryMoney/share/buy/Buyable.sol";
 import "github.com/8kb/DryMoney/share/buy/WithdrawSecurity.sol";
 import "github.com/8kb/DryMoney/share/mint/ByOwnerLimited.sol";
-import "github.com/8kb/DryMoney/withdraw/ByOwnerLimited.sol";
-import "github.com/8kb/DryMoney/withdraw/ByShareholder.sol";
+import "github.com/8kb/DryMoney/balance/WithdrawByOwnerLimited.sol";
+import "github.com/8kb/DryMoney/balance/WithdrawByShareholder.sol";
 import "github.com/8kb/DryMoney/share/CountLimit.sol";
 
 contract DemoToken is
@@ -21,8 +21,8 @@ ShareBuyBuyable,
 ShareBuyWithdrawSecurity,
 ShareCountLimit,
 ShareMintByOwnerLimited,
-WithdrawByOwnerLimited,
-WithdrawByShareholder
+BalanceWithdrawByOwnerLimited,
+BalanceWithdrawByShareholder
 {
     function DemoToken() public {
         name = "Demo Token";
