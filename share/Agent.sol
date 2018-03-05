@@ -1,8 +1,19 @@
 pragma solidity ^0.4.18;
-import "../share/IShared.sol";
-import "../owner/Owned.sol";
+import "./IShared.sol";
+import "../lib/SafeMath.sol";
 
-contract ShareAgent is OwnerOwned, ShareIShared {
+contract ShareAgent is ShareIShared {
+   using LibSafeMath for uint256;
+    /**
+     * @dev power balances
+     */
+    mapping(address => uint256) private powers;
+    
+    /**
+     * @dev  total number of power in existence
+     */
+    uint256 private powerCount_;
+    
     mapping(address => Trust) private trusted;
     struct Trust {
         uint256 size;
@@ -12,8 +23,20 @@ contract ShareAgent is OwnerOwned, ShareIShared {
     function haveAgent(address _owner) private view returns (bool) {
         return trusted[_owner].agent != address(0);
     }
-    
+
+    function powerTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
+        if(_from != address(0)) {
+            require(_value <= powers[_from]);
+            shares[_from] = powers[_from].sub(_value);
+        }
+        if(_to != address(0)) {
+            shares[_to] = powers[_to].add(_value);
+        }
+        return true;
+    }
+
     function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
+        require(super.shareTransfer(_from, _to, _value));
         while(haveAgent(_from)) {
             trusted[_from].size -= _value;
             _from = trusted[_from].agent;
@@ -22,13 +45,14 @@ contract ShareAgent is OwnerOwned, ShareIShared {
             trusted[_to].size += _value;
             _to = trusted[_to].agent;
         }
-        return super.shareTransfer(_from, _to, _value);
+        return powerTransfer(_from, _to, _value);
     }
     
     function empowerAgent(address newAgent) public returns (bool) {
         require(newAgent != address(0));
+        require(newAgent != msg.sender);
         if(!haveAgent(msg.sender)) {
-            trusted[msg.sender].size = shareSize(msg.sender);
+            trusted[msg.sender].size = powers[msg.sender];
         }
         shareTransfer(msg.sender, newAgent, trusted[msg.sender].size);
         trusted[msg.sender].agent = newAgent;
@@ -42,9 +66,5 @@ contract ShareAgent is OwnerOwned, ShareIShared {
         shareTransfer(oldAgent, msg.sender, trusted[msg.sender].size);
         trusted[msg.sender].size = 0;
         return true;
-    }
-    
-    function transferByOwner(address _from, address _to, uint256 _value) onlyOwner public returns (bool) {
-        return shareTransfer(_from, _to, _value);
     }
 }
