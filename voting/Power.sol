@@ -1,18 +1,42 @@
 pragma solidity ^0.4.18;
-import "./IShared.sol";
+import "../share/IShared.sol";
 import "../lib/SafeMath.sol";
 
-contract ShareAgent is ShareIShared {
-   using LibSafeMath for uint256;
-    /**
-     * @dev power balances
-     */
+contract VotingPower is ShareIShared {
+    using LibSafeMath for uint256;
+   
+    address[] public poweredUsers;
+    uint64 public poweredUsersCount;
     mapping(address => uint256) private powers;
     
-    /**
-     * @dev  total number of power in existence
-     */
-    uint256 private powerCount_;
+    struct powersData {
+         uint256 power;
+         uint64 number;
+    }
+    
+    function getPowerLevel(address _user) public returns(uint256) {
+         return powers[_user].power;
+    }
+
+    function powerTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
+        if(_from != address(0)) {
+            require(_value <= powers[_from].power);
+            shares[_from] = powers[_from].power.sub(_value);
+        }
+        if(_to != address(0)) {
+            shares[_to] = powers[_to].power.add(_value);
+        }
+        return true;
+    }
+
+    function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
+        require(super.shareTransfer(_from, _to, _value));
+        return powerTransfer(_from, _to, _value);
+    }
+}
+
+contract VotingPowerAgent is VotingPower {
+   using LibSafeMath for uint256;
     
     mapping(address => Trust) private trusted;
     struct Trust {
@@ -25,18 +49,6 @@ contract ShareAgent is ShareIShared {
     }
 
     function powerTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
-        if(_from != address(0)) {
-            require(_value <= powers[_from]);
-            shares[_from] = powers[_from].sub(_value);
-        }
-        if(_to != address(0)) {
-            shares[_to] = powers[_to].add(_value);
-        }
-        return true;
-    }
-
-    function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
-        require(super.shareTransfer(_from, _to, _value));
         while(haveAgent(_from)) {
             trusted[_from].size -= _value;
             _from = trusted[_from].agent;
@@ -45,7 +57,7 @@ contract ShareAgent is ShareIShared {
             trusted[_to].size += _value;
             _to = trusted[_to].agent;
         }
-        return powerTransfer(_from, _to, _value);
+        return super.powerTransfer(_from, _to, _value);
     }
     
     function empowerAgent(address newAgent) public returns (bool) {
