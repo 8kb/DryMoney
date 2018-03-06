@@ -14,6 +14,25 @@ contract VotingPower is ShareIShared {
          uint64 number;
     }
     
+    function tryAdd(address user) private {
+        if(powers[user].number == 0 AND powers[_user].power >= powerMinimum) {
+            poweredUsers[poweredUsersCount] = user;
+            poweredUsersCount++;
+            powers[user].number = poweredUsersCount;
+        }
+    }
+    
+    function tryDelete(address user) private {
+        if(powers[user].number > 0 AND powers[_user].power < powerMinimum) {
+            uint64 userId = powers[user].number - 1;
+            powers[user].number = 0;
+            poweredUsersCount--;
+            address lastUserAddress = poweredUsers[poweredUsersCount];
+            poweredUsers[userId] = lastUserAddress;
+            powers[lastUserAddress].number = userId;
+        }
+    }
+    
     function getPowerLevel(address _user) public returns(uint256) {
          return powers[_user].power;
     }
@@ -35,48 +54,3 @@ contract VotingPower is ShareIShared {
     }
 }
 
-contract VotingPowerAgent is VotingPower {
-   using LibSafeMath for uint256;
-    
-    mapping(address => Trust) private trusted;
-    struct Trust {
-        uint256 size;
-        address agent; 
-    }
-
-    function haveAgent(address _owner) private view returns (bool) {
-        return trusted[_owner].agent != address(0);
-    }
-
-    function powerTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
-        while(haveAgent(_from)) {
-            trusted[_from].size -= _value;
-            _from = trusted[_from].agent;
-        }
-        while(haveAgent(_to)) {
-            trusted[_to].size += _value;
-            _to = trusted[_to].agent;
-        }
-        return super.powerTransfer(_from, _to, _value);
-    }
-    
-    function empowerAgent(address newAgent) public returns (bool) {
-        require(newAgent != address(0));
-        require(newAgent != msg.sender);
-        if(!haveAgent(msg.sender)) {
-            trusted[msg.sender].size = powers[msg.sender];
-        }
-        shareTransfer(msg.sender, newAgent, trusted[msg.sender].size);
-        trusted[msg.sender].agent = newAgent;
-        return true;
-    }
-
-    function fireAgent() public returns (bool) {
-        require(haveAgent(msg.sender));
-        address oldAgent = trusted[msg.sender].agent;
-        trusted[msg.sender].agent = address(0);
-        shareTransfer(oldAgent, msg.sender, trusted[msg.sender].size);
-        trusted[msg.sender].size = 0;
-        return true;
-    }
-}
