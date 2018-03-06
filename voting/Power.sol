@@ -5,6 +5,7 @@ import "../lib/SafeMath.sol";
 contract VotingPower is ShareIShared {
     using LibSafeMath for uint256;
    
+    uint256 powerMinimum;
     address[] public poweredUsers;
     uint64 public poweredUsersCount;
     mapping(address => uint256) private powers;
@@ -15,7 +16,7 @@ contract VotingPower is ShareIShared {
     }
     
     function tryAdd(address user) private {
-        if(powers[user].number == 0 AND powers[_user].power >= powerMinimum) {
+        if((powers[user].number == 0) AND (powers[_user].power >= powerMinimum)) {
             poweredUsers[poweredUsersCount] = user;
             poweredUsersCount++;
             powers[user].number = poweredUsersCount;
