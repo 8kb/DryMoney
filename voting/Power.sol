@@ -24,7 +24,7 @@ contract VotingPower is ShareIShared {
     }
     
     function tryDelete(address user) private {
-        if(powers[user].number > 0 AND powers[_user].power < powerMinimum) {
+        if(powers[user].number > 0 && powers[_user].power < powerMinimum) {
             uint64 userId = powers[user].number - 1;
             powers[user].number = 0;
             poweredUsersCount--;
