@@ -16,7 +16,7 @@ contract VotingPower is ShareIShared {
     }
     
     function tryAdd(address user) private {
-        if((powers[user].number == 0) && (powers[user].power >= powerMinimum)) {
+        if((powers[user].number == uint64(0)) && (powers[user].power >= powerMinimum)) {
             poweredUsers[poweredUsersCount] = user;
             poweredUsersCount++;
             powers[user].number = poweredUsersCount;
