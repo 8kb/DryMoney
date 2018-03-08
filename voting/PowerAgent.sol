@@ -30,7 +30,7 @@ contract VotingPowerAgent is VotingPower {
         require(newAgent != address(0));
         require(newAgent != msg.sender);
         if(!haveAgent(msg.sender)) {
-            trusted[msg.sender].size = powers[msg.sender];
+            trusted[msg.sender].size = internalPower(msg.sender);
         }
         shareTransfer(msg.sender, newAgent, trusted[msg.sender].size);
         trusted[msg.sender].agent = newAgent;
