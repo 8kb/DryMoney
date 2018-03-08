@@ -34,8 +34,17 @@ contract VotingPower is ShareIShared {
         }
     }
     
-    function getPowerLevel(address _user) public returns(uint256) {
+    function internalPower(address _user) internal returns(uint256) {
          return powers[_user].power;
+    }
+    
+    function getPowerLevel(address _user) public returns(uint256) {
+        uint256 userPower = internalPower(address _user);
+        if(userPower < powerMinimum) {
+            return 0;
+        } else {
+            return userPower;
+        }
     }
 
     function powerTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
