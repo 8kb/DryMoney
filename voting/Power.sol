@@ -8,7 +8,7 @@ contract VotingPower is ShareIShared {
     uint256 powerMinimum;
     address[] public poweredUsers;
     uint64 public poweredUsersCount;
-    mapping(address => uint256) private powers;
+    mapping(address => powersData) private powers;
     
     struct powersData {
          uint256 power;
@@ -16,7 +16,7 @@ contract VotingPower is ShareIShared {
     }
     
     function tryAdd(address user) private {
-        if((powers[user].number == uint64(0)) && (powers[user].power >= powerMinimum)) {
+        if((powers[user].number == 0) && (powers[user].power >= powerMinimum)) {
             poweredUsers[poweredUsersCount] = user;
             poweredUsersCount++;
             powers[user].number = poweredUsersCount;
