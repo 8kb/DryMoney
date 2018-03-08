@@ -10,8 +10,10 @@ import "github.com/8kb/DryMoney/share/mint/ByOwnerLimited.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawByOwnerLimited.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawByShareholder.sol";
 import "github.com/8kb/DryMoney/share/CountLimit.sol";
+import "github.com/8kb/DryMoney/voting/PowerAgent.sol";
 
 contract DemoToken is
+VotingPowerAgent,
 ShareSharedLite,
 TokenMinimal,
 TokenDescEditByOwner,
