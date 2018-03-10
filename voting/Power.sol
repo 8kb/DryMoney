@@ -7,30 +7,30 @@ contract VotingPower is ShareIShared {
    
     uint256 powerMinimum;
     address[] public poweredUsers;
-    uint64 public poweredUsersCount;
+    uint256 public poweredUsersCount;
     mapping(address => powersData) private powers;
     
     struct powersData {
          uint256 power;
-         uint64 number;
+         uint256 id;
     }
     
     function tryAdd(address user) private {
-        if((powers[user].number == 0) && (powers[user].power >= powerMinimum)) {
+        if((powers[user].id == 0) && (powers[user].power >= powerMinimum)) {
             poweredUsers[poweredUsersCount] = user;
             poweredUsersCount++;
-            powers[user].number = poweredUsersCount;
+            powers[user].id = poweredUsersCount;
         }
     }
     
     function tryDelete(address user) private {
-        if(powers[user].number > 0 && powers[user].power < powerMinimum) {
-            uint64 userId = powers[user].number - 1;
-            powers[user].number = 0;
+        if(powers[user].id > 0 && powers[user].power < powerMinimum) {
+            uint256 userId = powers[user].id;
+            powers[user].id = 0;
             poweredUsersCount--;
             address lastUserAddress = poweredUsers[poweredUsersCount];
-            poweredUsers[userId] = lastUserAddress;
-            powers[lastUserAddress].number = userId;
+            poweredUsers[userId - 1] = lastUserAddress;
+            powers[lastUserAddress].id = userId - 1;
         }
     }
     
@@ -63,4 +63,3 @@ contract VotingPower is ShareIShared {
         return powerTransfer(_from, _to, _value);
     }
 }
-
