@@ -1,8 +1,8 @@
 pragma solidity ^0.4.18;
 import "../IShared.sol";
-import "../Priced.sol";
+import "./Priced.sol";
 
-contract ShareBuyBuyable is ShareIShared, SharePriced {
+contract ShareMintBuy is ShareIShared, ShareMintPriced {
     bool public buyAllowed;
 
     /**
