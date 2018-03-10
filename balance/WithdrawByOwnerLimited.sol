@@ -9,8 +9,7 @@ contract BalanceWithdrawByOwnerLimited is BalanceWithdrawByOwner, OwnerLimit {
      * @param _value The amount to be transferred
      */
     function withdraw(address _to, uint256 _value) onlyOwner public returns (bool) {
-        uint256 limit = getOwnerLimit();
-        require(_value <= limit);
+        require(_value <= getOwnerLimit());
         changeOwnerLimit(_value);
         return super.withdraw(_to, _value);
     }
