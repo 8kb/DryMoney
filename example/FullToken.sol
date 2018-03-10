@@ -9,7 +9,7 @@ import "github.com/8kb/DryMoney/share/buy/WithdrawSecurity.sol";
 import "github.com/8kb/DryMoney/share/mint/ByOwnerLimited.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawByOwnerLimited.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawByShareholder.sol";
-import "github.com/8kb/DryMoney/share/CountLimit.sol";
+import "github.com/8kb/DryMoney/share/MaximumLimit.sol";
 import "github.com/8kb/DryMoney/voting/PowerAgent.sol";
 
 contract DemoToken is
@@ -21,7 +21,7 @@ TokenAllowance,
 ShareBurn,
 ShareBuyBuyable,
 ShareBuyWithdrawSecurity,
-ShareCountLimit,
+ShareMaximumLimit,
 ShareMintByOwnerLimited,
 BalanceWithdrawByOwnerLimited,
 BalanceWithdrawByShareholder
@@ -35,7 +35,7 @@ BalanceWithdrawByShareholder
         price = 2 * priceUnits;
         buyAllowed = true;
         mintingAllowed = true;
-        maximumShareCount = 1000000000;
+        shareMaximumLimit = 1000000000;
         //
         ownerLimitMaximum = 10 ether;
         ownerLimitSpeed = uint256(1 ether) / uint256(1 days);
