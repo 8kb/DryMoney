@@ -26,6 +26,10 @@ contract VotingPowerAgent is VotingPower {
         return super.powerTransfer(_from, _to, _value);
     }
     
+    function getAgentAddress(address _owner) public view returns (address) {
+        return trusted[_owner].agent;
+    }
+    
     function empowerAgent(address newAgent) public returns (bool) {
         require(newAgent != address(0));
         require(newAgent != msg.sender);
