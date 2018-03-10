@@ -1,8 +1,8 @@
 pragma solidity ^0.4.18;
-import "./Buyable.sol";
+import "./Buy.sol";
 import "../../lib/SafeMath.sol";
 
-contract ShareBuyWithdrawSecurity is ShareBuyBuyable {
+contract ShareMintBuyWithdrawSecurity is ShareMintBuy {
     using LibSafeMath for uint256;
     /**
      * @dev Calculate count of shares what can buy concret buyer with selected amount
