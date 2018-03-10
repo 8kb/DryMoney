@@ -2,10 +2,10 @@ pragma solidity ^0.4.18;
 import "./IShared.sol";
 import "../lib/SafeMath.sol";
 
-contract ShareCountLimit is ShareIShared {
+contract ShareMaximumLimit is ShareIShared {
     using LibSafeMath for uint256;
     
-    uint256 public maximumShareCount;
+    uint256 public shareMaximumLimit;
     
     /**
      * @dev Internal transfer tokens from one address to another
@@ -16,7 +16,7 @@ contract ShareCountLimit is ShareIShared {
      */
     function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
         if(_from == address(0)) {
-            require(shareCount().add(_value) <= maximumShareCount);
+            require(shareCount().add(_value) <= shareMaximumLimit);
         }
         return super.shareTransfer(_from, _to, _value);
     }
