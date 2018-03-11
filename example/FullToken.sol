@@ -4,8 +4,8 @@ import "github.com/8kb/DryMoney/token/Minimal.sol";
 import "github.com/8kb/DryMoney/token/DescEditByOwner.sol";
 import "github.com/8kb/DryMoney/token/Allowance.sol";
 import "github.com/8kb/DryMoney/share/Burn.sol";
-import "github.com/8kb/DryMoney/share/buy/Buyable.sol";
-import "github.com/8kb/DryMoney/share/buy/WithdrawSecurity.sol";
+import "github.com/8kb/DryMoney/share/mint/Buy.sol";
+import "github.com/8kb/DryMoney/share/mint/BuyWithdrawSecurity.sol";
 import "github.com/8kb/DryMoney/share/mint/ByOwnerLimited.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawByOwnerLimited.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawByShareholder.sol";
@@ -19,8 +19,8 @@ TokenMinimal,
 TokenDescEditByOwner,
 TokenAllowance,
 ShareBurn,
-ShareBuyBuyable,
-ShareBuyWithdrawSecurity,
+ShareMintBuy,
+ShareMintBuyWithdrawSecurity,
 ShareMaximumLimit,
 ShareMintByOwnerLimited,
 BalanceWithdrawByOwnerLimited,
