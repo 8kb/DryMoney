@@ -10,7 +10,7 @@ contract ShareBurn is ShareIShared {
      */
     function burn(uint256 _value) public returns (bool) {
         require(_value != 0);
-        Burn(msg.sender, _value);
+        emit Burn(msg.sender, _value);
         return shareTransfer(msg.sender, 0, _value);
     }
 }
