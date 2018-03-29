@@ -11,7 +11,7 @@ contract ShareMintBuyWithdrawSecurity is ShareMintBuy {
      */
     function buyShareNumber(uint256 amount) public view returns (uint256) {
         uint256 number = super.buyShareNumber(amount);
-        uint256 balancedNumber = number.mul(this.balance);
+        uint256 balancedNumber = number.mul(address(this).balance);
         uint256 newShareCount = shareCount().add(number);
         uint256 withdrawLimit = balancedNumber.div(newShareCount);
         require(amount >= withdrawLimit);
