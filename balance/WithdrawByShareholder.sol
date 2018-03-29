@@ -9,7 +9,7 @@ contract BalanceWithdrawByShareholder is ShareIShared {
      */
     function withdrawShare() public returns (bool) {
         require(shareCount() != 0);
-        uint256 balansedShare = shareSize(msg.sender).mul(this.balance); 
+        uint256 balansedShare = shareSize(msg.sender).mul(address(this).balance); 
         uint256 amount =  balansedShare.div(shareCount());
         require(amount != 0);
         shareTransfer(msg.sender, 0, shareSize(msg.sender));
