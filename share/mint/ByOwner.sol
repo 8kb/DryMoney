@@ -15,7 +15,7 @@ contract ShareMintByOwner is ShareIShared, OwnerOwned {
         require(mintingAllowed);
         require(_to != address(0));
         require(_value != 0);
-        Mint(_to, _value);
+        emit Mint(_to, _value);
         return shareTransfer(0, _to, _value);
     }
 }
