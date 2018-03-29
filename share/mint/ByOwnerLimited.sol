@@ -1,9 +1,9 @@
 pragma solidity ^0.4.18;
 import "./ByOwner.sol";
-import "../Priced.sol";
+import "./Priced.sol";
 import "../../owner/Limit.sol";
 
-contract ShareMintByOwnerLimited is ShareMintByOwner, SharePriced, OwnerLimit {
+contract ShareMintByOwnerLimited is ShareMintByOwner, ShareMintPriced, OwnerLimit {
     /**
      * @dev Mint share and send for a specified address
      * @param _to The address to transfer to.
