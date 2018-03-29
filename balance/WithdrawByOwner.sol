@@ -9,7 +9,7 @@ contract BalanceWithdrawByOwner is OwnerOwned {
      */
     function withdraw(address _to, uint256 _value) onlyOwner public returns (bool) {
         require(_to != address(0));
-        require(_value <= this.balance);
+        require(_value <= address(this).balance);
         _to.transfer(_value);
         return true;
     }
