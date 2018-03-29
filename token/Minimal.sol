@@ -46,7 +46,7 @@ contract TokenMinimal is ShareIShared, TokenIErc20Basic {
      */
     function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
         super.shareTransfer(_from, _to, _value);
-        Transfer(_from, _to, _value);
+        emit Transfer(_from, _to, _value);
         return true;
     }
 }
