@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.21;
 contract TaskBroker {
     address[] taskList;
     uint256 vertexId;

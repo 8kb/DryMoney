@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.21;
 
 contract ExchangeAccounts {
     //mapping of token addresses to mapping of account balances (token=0 means Ether)

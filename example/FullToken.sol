@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.21;
 import "github.com/8kb/DryMoney/share/SharedLite.sol";
 import "github.com/8kb/DryMoney/token/Minimal.sol";
 import "github.com/8kb/DryMoney/token/DescEditByOwner.sol";

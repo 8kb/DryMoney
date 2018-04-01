@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.21;
 import "./DepositProxy.sol";
 import "github.com/8kb/DryMoney/excange/Accounts.sol";
 
