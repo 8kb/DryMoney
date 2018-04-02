@@ -2,6 +2,9 @@ pragma solidity ^0.4.21;
 import "./IShared.sol";
 import "../lib/SafeMath.sol";
 
+/**
+ * @title 
+ */
 contract ShareMinimumLimit is ShareIShared {
     using LibSafeMath for uint256;
     

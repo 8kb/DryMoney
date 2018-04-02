@@ -1,6 +1,9 @@
 pragma solidity ^0.4.21;
 import "./IShared.sol";
 
+/**
+ * @title Burn
+ */
 contract ShareBurn is ShareIShared {
     event Burn(address indexed owner, uint256 amount);
     

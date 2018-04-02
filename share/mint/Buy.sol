@@ -2,6 +2,9 @@ pragma solidity ^0.4.21;
 import "../IShared.sol";
 import "./Priced.sol";
 
+/**
+ * @title Buy share
+ */
 contract ShareMintBuy is ShareIShared, ShareMintPriced {
     bool public buyAllowed;
 

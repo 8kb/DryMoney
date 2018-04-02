@@ -1,6 +1,9 @@
 pragma solidity ^0.4.21;
 import "../../lib/SafeMath.sol";
 
+/**
+ * @title Price functions
+ */
 contract ShareMintPriced {
     using LibSafeMath for uint256;
     

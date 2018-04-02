@@ -2,6 +2,9 @@ pragma solidity ^0.4.21;
 import "./WithdrawByOwner.sol";
 import "../owner/Limit.sol";
 
+/**
+ * @title Balance Withdraw by owner, limited by owner limit
+ */
 contract BalanceWithdrawByOwnerLimited is BalanceWithdrawByOwner, OwnerLimit {
     /**
      * @dev Withdraw ethereum for a specified address

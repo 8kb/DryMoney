@@ -10,22 +10,26 @@ import "github.com/8kb/DryMoney/share/mint/ByOwnerLimited.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawByOwnerLimited.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawByShareholder.sol";
 import "github.com/8kb/DryMoney/share/MaximumLimit.sol";
-import "github.com/8kb/DryMoney/voting/PowerAgent.sol";
 
+/**
+ * @title All functions token
+ */
 contract DemoToken is
-VotingPowerAgent,
-ShareSharedLite,
-TokenMinimal,
-TokenDescEditByOwner,
-TokenAllowance,
-ShareBurn,
-ShareMintBuy,
-ShareMintBuyWithdrawSecurity,
-ShareMaximumLimit,
-ShareMintByOwnerLimited,
-BalanceWithdrawByOwnerLimited,
-BalanceWithdrawByShareholder
+    ShareSharedLite,
+    TokenMinimal,
+    TokenDescEditByOwner,
+    TokenAllowance,
+    ShareBurn,
+    ShareMintBuy,
+    ShareMintBuyWithdrawSecurity,
+    ShareMaximumLimit,
+    ShareMintByOwnerLimited,
+    BalanceWithdrawByOwnerLimited,
+    BalanceWithdrawByShareholder
 {
+    /**
+     * @dev Constructor
+     */
     function DemoToken() public {
         name = "Demo Token";
         symbol = "TKN";

@@ -1,5 +1,9 @@
 pragma solidity ^0.4.21;
 
+/**
+ * @title 
+ * @dev 
+ */
 contract VotingVoting is OwnerOwned {
     mapping(address => bool) public approves;
     mapping(address => bool) public disapproves;

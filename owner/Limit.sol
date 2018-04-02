@@ -1,6 +1,9 @@
 pragma solidity ^0.4.21;
 import "../lib/SafeMath.sol";
 
+/**
+ * @title Owner limit
+ */
 contract OwnerLimit {
     using LibSafeMath for uint256;
     

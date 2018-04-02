@@ -2,6 +2,10 @@ pragma solidity ^0.4.21;
 import "./DepositProxy.sol";
 import "github.com/8kb/DryMoney/excange/Accounts.sol";
 
+/**
+ * @title 
+ * @dev 
+ */
 contract ProxyFactory is ExchangeAccounts {
     mapping(address => address) private depositProxys;
 
@@ -26,6 +30,10 @@ contract ProxyFactory is ExchangeAccounts {
 
 import "github.com/8kb/DryMoney/token/IErc20Basic.sol";
 
+/**
+ * @title 
+ * @dev 
+ */
 contract DepositProxy {
 //    address internal owner;
 //    address internal target;

@@ -2,6 +2,9 @@ pragma solidity ^0.4.21;
 import "../IShared.sol";
 import "../../owner/Owned.sol";
 
+/**
+ * @title Mint by owner
+ */
 contract ShareMintByOwner is ShareIShared, OwnerOwned {
     event Mint(address indexed to, uint256 amount);
     bool public mintingAllowed;

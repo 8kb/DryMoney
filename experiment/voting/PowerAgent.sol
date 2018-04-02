@@ -1,6 +1,10 @@
 pragma solidity ^0.4.21;
 import "./Power.sol";
 
+/**
+ * @title 
+ * @dev 
+ */
 contract VotingPowerAgent is VotingPower {
    using LibSafeMath for uint256;
     

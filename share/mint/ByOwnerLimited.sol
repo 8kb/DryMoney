@@ -3,6 +3,9 @@ import "./ByOwner.sol";
 import "./Priced.sol";
 import "../../owner/Limit.sol";
 
+/**
+ * @title Mint by owner limited by owner limit
+ */
 contract ShareMintByOwnerLimited is ShareMintByOwner, ShareMintPriced, OwnerLimit {
     /**
      * @dev Mint share and send for a specified address

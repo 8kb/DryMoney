@@ -2,7 +2,6 @@ pragma solidity ^0.4.21;
 
 /**
  * @title 
- * @dev 
  */
  contract ShareIShared {
     /**

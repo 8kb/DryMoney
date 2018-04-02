@@ -1,5 +1,9 @@
 pragma solidity ^0.4.21;
 
+/**
+ * @title 
+ * @dev 
+ */
 contract ExchangeAccounts {
     //mapping of token addresses to mapping of account balances (token=0 means Ether)
     mapping (address => mapping (address => uint)) public tokens;

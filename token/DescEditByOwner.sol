@@ -4,7 +4,6 @@ import "../owner/Owned.sol";
 
 /**
  * @title 
- * @dev 
  */
 contract TokenDescEditByOwner is TokenMinimal, OwnerOwned {
     function setName(string _name)  onlyOwner public {

@@ -1,6 +1,9 @@
 pragma solidity ^0.4.21;
 import "../owner/Owned.sol";
 
+/**
+ * @title Withdraw by owner
+ */
 contract BalanceWithdrawByOwner is OwnerOwned {
     /**
      * @dev Withdraw ethereum for a specified address

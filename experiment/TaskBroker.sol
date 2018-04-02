@@ -1,4 +1,9 @@
 pragma solidity ^0.4.21;
+
+/**
+ * @title 
+ * @dev 
+ */
 contract TaskBroker {
     address[] taskList;
     uint256 vertexId;
@@ -32,6 +37,10 @@ contract TaskBroker {
     }
 }
 
+/**
+ * @title 
+ * @dev 
+ */
 contract GoodClient {
     address taskBroker;
     uint public counter;
@@ -47,6 +56,10 @@ contract GoodClient {
     }
 }
 
+/**
+ * @title 
+ * @dev 
+ */
 contract BadClient {
     uint public counter;
     function liveTask() public {

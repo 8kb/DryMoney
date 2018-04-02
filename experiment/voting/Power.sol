@@ -2,6 +2,10 @@ pragma solidity ^0.4.21;
 import "../share/IShared.sol";
 import "../lib/SafeMath.sol";
 
+/**
+ * @title 
+ * @dev 
+ */
 contract VotingPower is ShareIShared {
     using LibSafeMath for uint256;
    
