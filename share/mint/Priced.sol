@@ -18,8 +18,9 @@ contract ShareMintPriced {
     function defaultShareToAmount(uint256 number) public view returns (uint256) {
         require(price != 0);
         require(priceUnits != 0);
-        uint256 pricedNumber = number.mul(price);
-        return pricedNumber.div(priceUnits);
+//        uint256 pricedNumber = number.mul(price);
+//        return pricedNumber.div(priceUnits);
+          return number.mulDiv(price, priceUnits);
     }
 
     /**
@@ -30,7 +31,8 @@ contract ShareMintPriced {
     function defaultAmountToShare(uint256 amount) public view returns (uint256) {
         require(price != 0);
         require(priceUnits != 0);
-        uint256 amountUnit = amount.mul(priceUnits);
-        return  amountUnit.div(price);
+//        uint256 amountUnit = amount.mul(priceUnits);
+//        return  amountUnit.div(price);
+          return amount.mulDiv(priceUnits, price);
     }
 }
