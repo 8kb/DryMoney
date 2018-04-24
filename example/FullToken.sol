@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
 import "github.com/8kb/DryMoney/token/Erc20.sol";
-import "github.com/8kb/DryMoney/token/DescEditByOwner.sol";
+import "github.com/8kb/DryMoney/token/EditableByOwner.sol";
 import "github.com/8kb/DryMoney/share/MaximumLimit.sol";
 import "github.com/8kb/DryMoney/share/mint/Buy.sol";
 import "github.com/8kb/DryMoney/share/mint/BuyWithdrawSecurity.sol";
@@ -14,7 +14,7 @@ import "github.com/8kb/DryMoney/balance/WithdrawByOwnerLimited.sol";
  */
 contract DemoToken is
     TokenErc20,
-    TokenDescEditByOwner,
+    TokenEditableByOwner,
     ShareMaximumLimit,
     ShareMintBuy,
     ShareMintBuyWithdrawSecurity,
