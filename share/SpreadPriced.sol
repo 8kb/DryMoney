@@ -1,11 +1,11 @@
 pragma solidity ^0.4.21;
-import "../../lib/SafeMath.sol";
+import "../lib/SafeMath.sol";
 import "./Priced.sol";
 
 /**
  * @title 
  */
-contract ShareMintSpreadPriced is ShareMintPriced {
+contract ShareSpreadPriced is SharePriced {
     using LibSafeMath for uint256;
     
     uint256 public spreadUnits = 100000;

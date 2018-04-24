@@ -1,11 +1,11 @@
 pragma solidity ^0.4.21;
-import "../share/IShared.sol";
-import "../lib/SafeMath.sol";
+import "../IShared.sol";
+import "../../lib/SafeMath.sol";
 
 /**
  * @title Withdraw share
  */
-contract BalanceWithdrawByShareholder is ShareIShared {
+contract ShareBalancePricedSell is ShareIShared {
     using LibSafeMath for uint256;
 
     /**
