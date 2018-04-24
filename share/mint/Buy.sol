@@ -1,5 +1,5 @@
 pragma solidity ^0.4.21;
-import "../IShared.sol";
+import "../Shared.sol";
 import "../Priced.sol";
 
 /**

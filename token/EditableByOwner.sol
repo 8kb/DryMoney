@@ -1,11 +1,11 @@
 pragma solidity ^0.4.21;
-import "./Erc20Basic.sol";
+import "./Erc20.sol";
 import "../owner/Owned.sol";
 
 /**
  * @title 
  */
-contract TokenDescEditByOwner is TokenErc20, OwnerOwned {
+contract TokenEditableByOwner is TokenErc20, OwnerOwned {
     function setName(string _name)  onlyOwner public {
         name = _name;
     }
