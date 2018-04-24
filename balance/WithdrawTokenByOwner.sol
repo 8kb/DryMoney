@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
 import "../owner/Owned.sol";
-import "../Proto/Erc20Basic.sol";
+import "../proto/Erc20Basic.sol";
 
 /**
  * @title Withdraw token by owner
