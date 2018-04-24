@@ -1,5 +1,5 @@
 pragma solidity ^0.4.21;
-import "./Minimal.sol";
+import "./Erc20Basic.sol";
 import "../proto/Erc20.sol";
 import "../lib/SafeMath.sol";
 
