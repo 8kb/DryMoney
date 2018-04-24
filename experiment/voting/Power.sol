@@ -1,12 +1,12 @@
 pragma solidity ^0.4.21;
-import "../share/IShared.sol";
+import "../share/Shared.sol";
 import "../lib/SafeMath.sol";
 
 /**
  * @title 
  * @dev 
  */
-contract VotingPower is ShareIShared {
+contract VotingPower is ShareShared {
     using LibSafeMath for uint256;
    
     uint256 powerMinimum;

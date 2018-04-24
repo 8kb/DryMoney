@@ -1,31 +1,27 @@
 pragma solidity ^0.4.21;
-import "github.com/8kb/DryMoney/share/SharedLite.sol";
-import "github.com/8kb/DryMoney/token/Minimal.sol";
+import "github.com/8kb/DryMoney/token/Erc20.sol";
 import "github.com/8kb/DryMoney/token/DescEditByOwner.sol";
-import "github.com/8kb/DryMoney/token/Allowance.sol";
-import "github.com/8kb/DryMoney/share/Burn.sol";
+import "github.com/8kb/DryMoney/share/MaximumLimit.sol";
 import "github.com/8kb/DryMoney/share/mint/Buy.sol";
 import "github.com/8kb/DryMoney/share/mint/BuyWithdrawSecurity.sol";
 import "github.com/8kb/DryMoney/share/mint/ByOwnerLimited.sol";
+import "github.com/8kb/DryMoney/share/burn/Burn.sol";
+import "github.com/8kb/DryMoney/share/burn/BalancePricedSell.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawByOwnerLimited.sol";
-import "github.com/8kb/DryMoney/balance/WithdrawByShareholder.sol";
-import "github.com/8kb/DryMoney/share/MaximumLimit.sol";
 
 /**
  * @title All functions token
  */
 contract DemoToken is
-    ShareSharedLite,
-    TokenMinimal,
+    TokenErc20,
     TokenDescEditByOwner,
-    TokenAllowance,
-    ShareBurn,
+    ShareMaximumLimit,
     ShareMintBuy,
     ShareMintBuyWithdrawSecurity,
-    ShareMaximumLimit,
     ShareMintByOwnerLimited,
-    BalanceWithdrawByOwnerLimited,
-    BalanceWithdrawByShareholder
+    ShareBurnBurn,
+    ShareBurnBalancePricedSell,
+    BalanceWithdrawByOwnerLimited
 {
     /**
      * @dev Constructor

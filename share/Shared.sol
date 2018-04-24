@@ -1,12 +1,11 @@
 pragma solidity ^0.4.21;
-import "./IShared.sol";
 import "../lib/SafeMath.sol";
 
 /**
  * @title 
  * @dev 
  */
- contract ShareSharedLite is ShareIShared {
+ contract ShareShared {
     using LibSafeMath for uint256;
     /**
      * @dev shares balances

@@ -1,13 +1,13 @@
 pragma solidity ^0.4.21;
 import "./Minimal.sol";
-import "./IErc20.sol";
+import "../proto/Erc20.sol";
 import "../lib/SafeMath.sol";
 
 /**
- * @title Allowance
+ * @title Erc20
  * @dev Allowances functions for ERC20
  */
-contract TokenAllowance is TokenMinimal, TokenIErc20 {
+contract TokenErc20 is TokenErc20Basic, ProtoErc20 {
     using LibSafeMath for uint256;
     /**
      * @dev Allowances map

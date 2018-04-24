@@ -1,12 +1,12 @@
 pragma solidity ^0.4.21;
-import "../share/IShared.sol";
-import "../token/IErc20Basic.sol";
+import "../share/Shared.sol";
+import "../proto/Erc20Basic.sol";
 
 /**
  * @title Minimal Token
  * @dev Minimal functions for ERC20, with no allowances
  */
-contract TokenMinimal is ShareIShared, TokenIErc20Basic {
+contract TokenErc20Basic is ShareShared, ProtoErc20Basic {
     string public name;
     string public symbol;
     uint8 public decimals;

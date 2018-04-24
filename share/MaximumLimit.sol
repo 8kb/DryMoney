@@ -1,11 +1,11 @@
 pragma solidity ^0.4.21;
-import "./IShared.sol";
+import "./Shared.sol";
 import "../lib/SafeMath.sol";
 
 /**
  * @title 
  */
-contract ShareMaximumLimit is ShareIShared {
+contract ShareMaximumLimit is ShareShared {
     using LibSafeMath for uint256;
     
     uint256 public shareMaximumLimit;
