@@ -4,7 +4,7 @@ import "../IShared.sol";
 /**
  * @title Burn
  */
-contract ShareBurn is ShareIShared {
+contract ShareBurnBurn is ShareIShared {
     event Burn(address indexed owner, uint256 amount);
     
     /**

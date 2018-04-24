@@ -5,7 +5,7 @@ import "../../lib/SafeMath.sol";
 /**
  * @title Withdraw share
  */
-contract ShareBalancePricedSell is ShareIShared {
+contract ShareBurnBalancePricedSell is ShareIShared {
     using LibSafeMath for uint256;
 
     /**
