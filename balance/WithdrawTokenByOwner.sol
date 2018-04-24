@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
 import "../owner/Owned.sol";
-import "../token/IErc20.sol";
+import "../Proto/Erc20.sol";
 
 /**
  * @title Withdraw token by owner
@@ -14,8 +14,8 @@ contract BalanceWithdrawTokenByOwner is OwnerOwned {
      */
     function withdrawToken(address token, address _to, uint256 amount) onlyOwner public returns (bool) {
         require(token != address(0));
-        require(TokenIErc20(token).balanceOf(address(this)) >= amount);
-        bool transferOk = TokenIErc20(token).transfer(_to, amount);
+        require(ProtoErc20Basic(token).balanceOf(address(this)) >= amount);
+        bool transferOk = ProtoErc20(token).transfer(_to, amount);
         require(transferOk);
         return true;
     }
