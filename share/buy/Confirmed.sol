@@ -1,9 +1,9 @@
 pragma solidity ^0.4.21;
-import "github.com/8kb/DryMoney/share/Shared.sol";
-import "github.com/8kb/DryMoney/owner/Owned.sol";
-import "github.com/8kb/DryMoney/share/Priced.sol";
+import "../Shared.sol";
+import "../../owner/Owned.sol";
+import "../../proto/Priced.sol";
 
-contract ConfirmedBuys is ShareShared, OwnerOwned, SharePriced {
+contract ConfirmedBuys is ShareShared, OwnerOwned, ProtoPriced {
     BuyOrder[] internal buyOrder;
     uint256 public buyOrderTotal;
     struct BuyOrder {
@@ -26,9 +26,9 @@ contract ConfirmedBuys is ShareShared, OwnerOwned, SharePriced {
     
     function confirmOneBuy(uint256 i) internal {
         uint256 amountWei = buyOrder[i].amountWei;
-        uint256 shareCount = defaultAmountToShare(amountWei);
+        uint256 shareNumber = weiToShare(amountWei);
         address user = buyOrder[i].user;
-        shareTransfer(address(0), user, shareCount);
+        shareTransfer(address(0), user, shareNumber);
         buyOrderTotal -= amountWei;
     }
 }

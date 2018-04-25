@@ -1,26 +1,19 @@
 pragma solidity ^0.4.21;
 import "../Shared.sol";
 import "../../lib/SafeMath.sol";
+import "../../proto/Priced.sol";
 
 /**
  * @title Withdraw share
  */
-contract ShareSellDirectly is ShareShared {
+contract ShareSellDirectly is ShareShared, ProtoPriced {
     using LibSafeMath for uint256;
 
-    /**
-     * @dev Withdraw all shared balance by shareholder 
-     */
-    function withdrawShare() public returns (bool) {
-        require(shareCount() != 0);
-//        uint256 balansedShare = shareSize(msg.sender).mul(address(this).balance); 
-//        uint256 amount =  balansedShare.div(shareCount());
-        uint256 senderShare = shareSize(msg.sender); 
-        uint256 amount = senderShare.mulDiv(address(this).balance, shareCount());
-
-        require(amount != 0);
-        shareTransfer(msg.sender, 0, shareSize(msg.sender));
-        msg.sender.transfer(amount);
-        return true;
+    function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
+        if(_to == address(this)) {
+            _from.transfer(shareToWei(_value));
+            _to = address(0);
+        }
+        return super.shareTransfer(_from, _to, _value);
     }
 }

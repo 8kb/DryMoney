@@ -1,11 +1,11 @@
 pragma solidity ^0.4.21;
 import "../Shared.sol";
-import "../Priced.sol";
+import "../../proto/IPriced.sol";
 
 /**
  * @title Buy share
  */
-contract ShareBuyDirectly is ShareShared, SharePriced {
+contract ShareBuyDirectly is ShareShared, ProtoPriced {
     bool public buyAllowed;
 
     /**
@@ -17,7 +17,7 @@ contract ShareBuyDirectly is ShareShared, SharePriced {
     function buyShareNumber(uint256 amount) public view returns (uint256) {
         require(buyAllowed);
         require(amount != 0);
-        return defaultAmountToShare(amount);
+        return weiToShare(amount);
     }
 
     /**
