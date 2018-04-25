@@ -1,5 +1,5 @@
 pragma solidity ^0.4.21;
-import "../lib/SafeMath.sol";
+import "../../lib/SafeMath.sol";
 import "./Fixed.sol";
 
 /**
