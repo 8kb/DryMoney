@@ -6,7 +6,6 @@ import "../../owner/Owned.sol";
  * @title Mint by owner
  */
 contract ShareMintByOwner is ShareShared, OwnerOwned {
-    event Mint(address indexed to, uint256 amount);
     bool public mintingAllowed;
     
     /**
@@ -18,7 +17,6 @@ contract ShareMintByOwner is ShareShared, OwnerOwned {
         require(mintingAllowed);
         require(_to != address(0));
         require(_value != 0);
-        emit Mint(_to, _value);
         return shareTransfer(0, _to, _value);
     }
 }

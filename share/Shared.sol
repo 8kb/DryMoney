@@ -7,6 +7,9 @@ import "../lib/SafeMath.sol";
  */
  contract ShareShared {
     using LibSafeMath for uint256;
+    event Burn(address indexed owner, uint256 amount);
+    event Mint(address indexed to, uint256 amount);
+
     /**
      * @dev shares balances
      */
@@ -41,16 +44,18 @@ import "../lib/SafeMath.sol";
      * @param _value uint256 the amount of tokens to be transferred
      */
     function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
-        if(_from != address(0)) {
+        if(_from == address(0)) {
+            emit Mint(_to, _value);
+            shareCount_ =shareCount_.add(_value);
+        } else {
             require(_value <= shares[_from]);
             shares[_from] = shares[_from].sub(_value);
-        } else {
-            shareCount_ =shareCount_.add(_value);
         }
-        if(_to != address(0)) {
-            shares[_to] =shares[_to].add(_value);
-        } else {
+        if(_to == address(0)) {
+            emit Burn(msg.sender, _value);
             shareCount_ =shareCount_.sub(_value);
+        } else {
+            shares[_to] =shares[_to].add(_value);
         }
         return true;
     }
