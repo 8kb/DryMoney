@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
 import "../Shared.sol";
-import "../../proto/IPriced.sol";
+import "../../proto/Priced.sol";
 
 /**
  * @title Buy share

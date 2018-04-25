@@ -1,7 +1,6 @@
 pragma solidity ^0.4.21;
 import "../lib/SafeMath.sol";
 import "./Fixed.sol";
-import "../../proto/Priced.sol";
 
 /**
  * @title 

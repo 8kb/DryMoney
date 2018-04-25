@@ -5,7 +5,7 @@ import "../../proto/Priced.sol";
 /**
  * @title Price functions
  */
-contract SharePriceFixed {
+contract SharePriceFixed is ProtoPriced {
     using LibSafeMath for uint256;
     
     uint256 public price;
