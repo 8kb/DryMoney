@@ -5,7 +5,7 @@ import "../../lib/SafeMath.sol";
 /**
  * @title Withdraw share
  */
-contract ShareBurnBalancePricedSell is ShareShared {
+contract ShareSellDirectly is ShareShared {
     using LibSafeMath for uint256;
 
     /**
@@ -16,7 +16,7 @@ contract ShareBurnBalancePricedSell is ShareShared {
 //        uint256 balansedShare = shareSize(msg.sender).mul(address(this).balance); 
 //        uint256 amount =  balansedShare.div(shareCount());
         uint256 senderShare = shareSize(msg.sender); 
-        uint256 amount = address(this).balance.mulDiv(senderShare, shareCount());
+        uint256 amount = senderShare.mulDiv(address(this).balance, shareCount());
 
         require(amount != 0);
         shareTransfer(msg.sender, 0, shareSize(msg.sender));

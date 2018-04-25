@@ -5,7 +5,7 @@ import "../Priced.sol";
 /**
  * @title Buy share
  */
-contract ShareMintBuy is ShareShared, SharePriced {
+contract ShareBuyDirectly is ShareShared, SharePriced {
     bool public buyAllowed;
 
     /**
