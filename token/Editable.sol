@@ -5,7 +5,7 @@ import "../owner/Owned.sol";
 /**
  * @title 
  */
-contract TokenEditableByOwner is TokenErc20Basic, OwnerOwned {
+contract TokenEditable is TokenErc20Basic, OwnerOwned {
     function setName(string _name)  onlyOwner public {
         name = _name;
     }
