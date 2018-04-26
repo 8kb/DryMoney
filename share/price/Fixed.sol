@@ -21,7 +21,7 @@ contract SharePriceFixed is ProtoPriced {
         require(priceUnits != 0);
 //        uint256 pricedNumber = number.mul(price);
 //        return pricedNumber.div(priceUnits);
-          return shareNumder.mulDiv(price, priceUnits);
+          return shareNumber.mulDiv(price, priceUnits);
     }
 
     /**
