@@ -1,7 +1,9 @@
 pragma solidity ^0.4.21;
 import "../../owner/Owned.sol";
+import "./EditablePrice.sol";
+import "./Spread.sol";
 
-contract EditSpread is OwnerOwned {
+contract SharePriceEditableSpread is OwnerOwned, SharePriceSpread, SharePriceEditablePrice  {
     function setSpread(uint _spread) onlyOwner public {
         spread = _spread;
     }

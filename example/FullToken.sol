@@ -3,9 +3,7 @@ import "github.com/8kb/DryMoney/token/Erc20.sol";
 import "github.com/8kb/DryMoney/token/EditableByOwner.sol";
 
 import "github.com/8kb/DryMoney/share/MaximumLimit.sol";
-import "github.com/8kb/DryMoney/share/price/Spread.sol";
-import "github.com/8kb/DryMoney/share/price/EditPrice.sol";
-import "github.com/8kb/DryMoney/share/price/EditSpread.sol";
+import "github.com/8kb/DryMoney/share/price/EditableSpread.sol";
 import "github.com/8kb/DryMoney/share/buy/Directly.sol";
 import "github.com/8kb/DryMoney/share/sell/Directly.sol";
 
@@ -18,9 +16,9 @@ import "github.com/8kb/DryMoney/balance/WithdrawTokenByOwner.sol";
  */
 contract DemoToken is
     TokenErc20,
-    TokenEditableByOwner,
+    TokenEditable,
     ShareMaximumLimit,
-    SharePriceFixed,
+    SharePriceEditableSpread,
     ShareBuyDirectly,
     ShareMintByOwnerLimited,
     ShareSellDirectly,
