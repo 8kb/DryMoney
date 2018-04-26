@@ -13,7 +13,7 @@ contract ShareSellConfirmed is ShareShared, OwnerOwned, ProtoPriced {
     }
     function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
         if(_to == address(this)) {
-            require(buyAllowed);
+            require(sellAllowed);
             sellOrder.push(SellOrder(msg.sender, _value));
             sellOrderTotal += _value;
         }
