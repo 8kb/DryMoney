@@ -10,7 +10,7 @@ contract SharePriceBalanceBasedSell {
     /**
      * @dev Calculate default price for selected number of shares
      * @param shareNumber number of shares
-     * @return default amount
+     * @return amount
      */
     function shareToWei(uint256 shareNumber) public view returns (uint256) {
         require(shareCount() != 0);

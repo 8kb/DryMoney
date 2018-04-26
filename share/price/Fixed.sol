@@ -14,7 +14,7 @@ contract SharePriceFixed is ProtoPriced {
     /**
      * @dev Calculate default price for selected number of shares
      * @param shareNumber number of shares
-     * @return default amount
+     * @return amount
      */
     function shareToWei(uint256 shareNumder) public view returns (uint256) {
         require(price != 0);
@@ -26,7 +26,7 @@ contract SharePriceFixed is ProtoPriced {
 
     /**
      * @dev Calculate count of shares what can buy with selected amount for default price
-     * @param amountWei 
+     * @param amountWei amount for buy share
      * @return number of shares
      */
     function weiToShare(uint256 amountWei) public view returns (uint256) {
