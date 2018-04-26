@@ -7,7 +7,7 @@ import "github.com/8kb/DryMoney/balance/WithdrawByOwner.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawTokenByOwner.sol";
 
 /**
- * @title
+ * @title Token with buy/sell need be confirmed by owner
  */
 contract ConfirmedToken is
     TokenEditable,
