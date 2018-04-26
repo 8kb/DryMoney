@@ -16,7 +16,7 @@ contract SharePriceFixed is ProtoPriced {
      * @param shareNumber number of shares
      * @return amount
      */
-    function shareToWei(uint256 shareNumder) public view returns (uint256) {
+    function shareToWei(uint256 shareNumber) public view returns (uint256) {
         require(price != 0);
         require(priceUnits != 0);
 //        uint256 pricedNumber = number.mul(price);
