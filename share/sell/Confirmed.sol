@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 import "../Shared.sol";
 import "../../owner/Owned.sol";
 import "../../proto/Priced.sol";
@@ -33,7 +33,7 @@ contract ShareSellConfirmed is ShareShared, OwnerOwned, ProtoPriced {
         uint256 amountWei = shareToWei(shareNumber);
         address user = sellOrder[i].user;
         shareTransfer(address(this), address(0), shareNumber);
-        user.transfer(amountWei);
         sellOrderTotal -= shareNumber;
+        user.transfer(amountWei);
     }
 }

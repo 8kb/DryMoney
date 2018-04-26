@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 import "../../lib/SafeMath.sol";
 
 /**
@@ -9,7 +9,7 @@ contract SharePriceBalanceBasedSell {
     
     /**
      * @dev Calculate default price for selected number of shares
-     * @param shareCount number of shares
+     * @param shareNumber number of shares
      * @return default amount
      */
     function shareToWei(uint256 shareNumber) public view returns (uint256) {

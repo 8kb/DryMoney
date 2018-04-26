@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 import "../Shared.sol";
 import "../../owner/Owned.sol";
 import "../../proto/Priced.sol";

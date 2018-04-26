@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 import "github.com/8kb/DryMoney/token/Editable.sol";
 import "github.com/8kb/DryMoney/share/mint/ByOwner.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawByOwner.sol";
@@ -13,10 +13,7 @@ contract KingToken is
     BalanceWithdrawByOwner,
     BalanceWithdrawTokenByOwner
 {
-    /**
-     * @dev Constructor
-     */
-    function DemoToken() public {
+    constructor() public {
         name = "Demo Token";
         symbol = "TKN";
         decimals = 6;

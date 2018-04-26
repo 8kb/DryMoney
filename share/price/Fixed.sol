@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 import "../../lib/SafeMath.sol";
 import "../../proto/Priced.sol";
 
@@ -13,15 +13,15 @@ contract SharePriceFixed is ProtoPriced {
     
     /**
      * @dev Calculate default price for selected number of shares
-     * @param shareCount number of shares
+     * @param shareNumber number of shares
      * @return default amount
      */
-    function shareToWei(uint256 shareCount) public view returns (uint256) {
+    function shareToWei(uint256 shareNumder) public view returns (uint256) {
         require(price != 0);
         require(priceUnits != 0);
 //        uint256 pricedNumber = number.mul(price);
 //        return pricedNumber.div(priceUnits);
-          return shareCount.mulDiv(price, priceUnits);
+          return shareNumder.mulDiv(price, priceUnits);
     }
 
     /**

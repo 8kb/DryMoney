@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 import "../Shared.sol";
 import "../../lib/SafeMath.sol";
 import "../../proto/Priced.sol";
@@ -13,9 +13,11 @@ contract ShareSellDirectly is ShareShared, ProtoPriced {
     function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
         if(_to == address(this)) {
             require(sellAllowed);
+            super.shareTransfer(_from, address(0), _value);
             _from.transfer(shareToWei(_value));
-            _to = address(0);
+            return true;
+        } else {
+            return super.shareTransfer(_from, _to, _value);
         }
-        return super.shareTransfer(_from, _to, _value);
     }
 }
