@@ -12,6 +12,6 @@ contract ShareBuyDirectly is ShareShared, ProtoPriced {
     function() public payable {
         require(buyAllowed);
         uint256 shareNumber = weiToShare(msg.value);
-        return shareTransfer(0, msg.sender, shareNumber);
+        shareTransfer(0, msg.sender, shareNumber);
     }
 }
