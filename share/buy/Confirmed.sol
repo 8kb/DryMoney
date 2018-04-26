@@ -3,7 +3,8 @@ import "../Shared.sol";
 import "../../owner/Owned.sol";
 import "../../proto/Priced.sol";
 
-contract ConfirmedBuys is ShareShared, OwnerOwned, ProtoPriced {
+contract ShareBuyConfirmed is ShareShared, OwnerOwned, ProtoPriced {
+    bool public buyAllowed;
     BuyOrder[] internal buyOrder;
     uint256 public buyOrderTotal;
     struct BuyOrder {
@@ -12,6 +13,7 @@ contract ConfirmedBuys is ShareShared, OwnerOwned, ProtoPriced {
     }
     
     function() public payable {
+        require(buyAllowed);
         buyOrder.push(BuyOrder(msg.sender, msg.value));
         buyOrderTotal += msg.value;
     }

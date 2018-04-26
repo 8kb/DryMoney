@@ -8,9 +8,11 @@ import "../../proto/Priced.sol";
  */
 contract ShareSellDirectly is ShareShared, ProtoPriced {
     using LibSafeMath for uint256;
+    bool public sellAllowed;
 
     function shareTransfer(address _from, address _to, uint256 _value) internal returns (bool) {
         if(_to == address(this)) {
+            require(buyAllowed);
             _from.transfer(shareToWei(_value));
             _to = address(0);
         }
