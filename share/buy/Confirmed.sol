@@ -11,8 +11,16 @@ contract ShareBuyConfirmed is ShareShared, OwnerOwned, ProtoPriced {
         address user; 
         uint256 amountWei;
     }
-    
+
     function() public payable {
+        if(gasleft >= 80000) {
+            buy();
+        } else {
+            revert();
+        }
+    }
+    
+    function buy() public payable {
         require(buyAllowed);
         buyOrder.push(BuyOrder(msg.sender, msg.value));
         buyOrderTotal += msg.value;

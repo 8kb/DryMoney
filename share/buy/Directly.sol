@@ -8,8 +8,15 @@ import "../../proto/Priced.sol";
 contract ShareBuyDirectly is ShareShared, ProtoPriced {
     bool public buyAllowed;
 
-
     function() public payable {
+        if(gasleft >= 80000) {
+            buy();
+        } else {
+            revert();
+        }
+    }
+
+    function buy() public payable {
         require(buyAllowed);
         uint256 shareNumber = weiToShare(msg.value);
         shareTransfer(0, msg.sender, shareNumber);

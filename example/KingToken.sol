@@ -16,6 +16,6 @@ contract KingToken is
     constructor() public {
         name = "Demo Token";
         symbol = "TKN";
-        decimals = 6;
+        decimals = 18;
     }
 }

@@ -24,7 +24,7 @@ contract DemoToken is
     constructor() public {
         name = "Demo Token";
         symbol = "TKN";
-        decimals = 6;
+        decimals = 18;
         //
         priceUnits = 1 ether;
         price = 2 * priceUnits;
