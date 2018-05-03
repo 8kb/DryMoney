@@ -13,7 +13,7 @@ contract ShareBuyConfirmed is ShareShared, OwnerOwned, ProtoPriced {
     }
 
     function() public payable {
-        if(gasleft >= 80000) {
+        if(gasleft() >= 80000) {
             buy();
         } else {
             revert();
