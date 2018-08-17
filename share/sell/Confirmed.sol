@@ -22,13 +22,19 @@ contract ShareSellConfirmed is ShareShared, OwnerOwned, ProtoPriced {
     
     function confirmAllSells() external onlyOwner {
         while(sellOrder.length > 0) {
-            confirmOneSell(sellOrder.length-1);
+            _confirmOneSell(sellOrder.length-1);
             delete sellOrder[sellOrder.length-1];
             sellOrder.length--;
         }
     }
     
-    function confirmOneSell(uint256 i) internal {
+    function confirmOneSell() external onlyOwner {
+        _confirmOneSell(sellOrder.length-1);
+        delete sellOrder[sellOrder.length-1];
+        sellOrder.length--;
+    }
+    
+    function _confirmOneSell(uint256 i) internal {
         uint256 shareNumber = sellOrder[i].shareNumber;
         uint256 amountWei = shareToWei(shareNumber);
         address user = sellOrder[i].user;

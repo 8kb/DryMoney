@@ -13,10 +13,6 @@ contract ShareBuyConfirmed is ShareShared, OwnerOwned, ProtoPriced {
     }
 
     function() public payable {
-        buy();
-    }
-    
-    function buy() public payable {
         require(buyAllowed);
         buyOrder.push(BuyOrder(msg.sender, msg.value));
         buyOrderTotal += msg.value;
@@ -24,13 +20,21 @@ contract ShareBuyConfirmed is ShareShared, OwnerOwned, ProtoPriced {
     
     function confirmAllBuys() external onlyOwner {
         while(buyOrder.length > 0) {
-            confirmOneBuy(buyOrder.length-1);
+            _confirmOneBuy(buyOrder.length-1);
             delete buyOrder[buyOrder.length-1];
             buyOrder.length--;
         }
     }
     
-    function confirmOneBuy(uint256 i) internal {
+    function confirmOneBuy() external onlyOwner {
+        if(buyOrder.length > 0) {
+            _confirmOneBuy(buyOrder.length-1);
+            delete buyOrder[buyOrder.length-1];
+            buyOrder.length--;
+        }
+    }
+    
+    function _confirmOneBuy(uint256 i) internal {
         uint256 amountWei = buyOrder[i].amountWei;
         uint256 shareNumber = weiToShare(amountWei);
         address user = buyOrder[i].user;
