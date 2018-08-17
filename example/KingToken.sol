@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 import "github.com/8kb/DryMoney/token/Editable.sol";
 import "github.com/8kb/DryMoney/share/mint/ByOwner.sol";
 import "github.com/8kb/DryMoney/balance/WithdrawByOwner.sol";

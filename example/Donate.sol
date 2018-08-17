@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 import "github.com/8kb/DryMoney/balance/WithdrawByOwnerLimited.sol";
 import "github.com/8kb/DryMoney/balance/Limit.sol";
 

@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 import "../share/Shared.sol";
 import "../proto/Erc20Basic.sol";
 
